@@ -40,32 +40,47 @@ const reasons=["Your smile lights up my day 😊","You make me a better person �
 function msg(){m.innerHTML="💕 Happy Girlfriend Day! I love you more than words can say."}
 function reason(){r.innerHTML=reasons[Math.floor(Math.random()*reasons.length)]}
 function jump(btn){
- if(navigator.vibrate) navigator.vibrate(80);
- const a=btn.parentElement;
- btn.style.left=Math.random()*(a.clientWidth-btn.offsetWidth)+"px";
- btn.style.top=Math.random()*(a.clientHeight-btn.offsetHeight)+"px";
+    if(navigator.vibrate) navigator.vibrate(80);
+
+    const a = btn.parentElement;
+
+    btn.style.left = Math.random() * (a.clientWidth - btn.offsetWidth) + "px";
+    btn.style.top = Math.random() * (a.clientHeight - btn.offsetHeight) + "px";
 }
+
 const messages = {
     no1: "p",
     no2: "s"
 };
+
 Object.keys(messages).forEach(id => {
+
     const b = document.getElementById(id);
+
     ["touchstart","pointerdown","mouseenter","click"].forEach(ev => {
-        b.addEventListener(ev, function(e) {
+
+        b.addEventListener(ev,function(e){
+
             e.preventDefault();
+
             jump(b);
+
             document.getElementById(messages[id]).innerHTML = "😄 Nice try!";
-        }, { passive: false });
+
+        },{passive:false});
+
     });
+
 });
+
 setInterval(()=>{
- let h=document.createElement("div");
- h.className="heart";h.textContent="❤️";
- h.style.left=Math.random()*100+"vw";
- h.style.fontSize=(18+Math.random()*18)+"px";
- document.body.appendChild(h);
- setTimeout(()=>h.remove(),6000);
+    let h=document.createElement("div");
+    h.className="heart";
+    h.textContent="❤️";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(18+Math.random()*18)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
 },350);
 </script>
 </body></html>
