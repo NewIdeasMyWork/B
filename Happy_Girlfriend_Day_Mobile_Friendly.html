@@ -10,7 +10,7 @@
 .card{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:20px;padding:22px;text-align:center}
 button{padding:14px 22px;border:none;border-radius:999px;margin:8px;font-size:17px}
 .area{position:relative;height:110px}
-#no1{position:absolute;left:180px}
+#no1,#no2{position:absolute;left:180px}
 .out{min-height:28px;margin-top:10px}
 .heart{position:fixed;bottom:-30px;animation:f 6s linear forwards}
 @keyframes f{to{transform:translateY(-110vh);opacity:0}}
@@ -25,14 +25,14 @@ button{padding:14px 22px;border:none;border-radius:999px;margin:8px;font-size:17
 <hr>
 <h2>💍 Will You Marry Me?</h2>
 <div class="area">
-<button onclick="document.getElementById('s').innerHTML='💍 You made me the happiest person! ❤️'">YES 💖</button>
+<button onclick="document.getElementById('p').innerHTML='💍 You made me the happiest person! ❤️'">YES 💖</button>
 <button id="no1">NO 😝</button>
-</div><div id="s" class="out"></div>
+</div><div id="p" class="out"></div>
 <hr>
 <h2>🥺 Will You Forgive Me?</h2>
 <div class="area">
 <button onclick="document.getElementById('s').innerHTML='Thank you ❤️ I promise to do better and keep making you smile.'">YES ❤️</button>
-<button id="no1">NO 😤</button>
+<button id="no2">NO 😤</button>
 </div><div id="s" class="out"></div>
 </div></div>
 <script>
@@ -45,10 +45,11 @@ function jump(btn){
  btn.style.left=Math.random()*(a.clientWidth-btn.offsetWidth)+"px";
  btn.style.top=Math.random()*(a.clientHeight-btn.offsetHeight)+"px";
 }
-["no1"].forEach(id=>{
+["no1","no2"].forEach(id=>{
  const b=document.getElementById(id);
  ["touchstart","pointerdown","mouseenter","click"].forEach(ev=>{
-   b.addEventListener(ev,function(e){e.preventDefault();jump(b); if(id==="no1") s.innerHTML="😄 Nice try!";},{passive:false});
+   b.addEventListener(ev,function(e){e.preventDefault();jump(b); if(id==="no1") s.innerHTML="😄 Nice try!";},{passive:false}
+  {b.addEventListener(ev,function(e){e.preventDefault();jump(b); if(id==="no2") s.innerHTML="😄 Nice try!";},{passive:false});
  });
 });
 setInterval(()=>{
