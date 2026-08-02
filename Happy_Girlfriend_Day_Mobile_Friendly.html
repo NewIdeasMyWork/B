@@ -49,24 +49,15 @@ const messages = {
     no1: "p",
     no2: "s"
 };
-
 Object.keys(messages).forEach(id => {
-
     const b = document.getElementById(id);
-
     ["touchstart","pointerdown","mouseenter","click"].forEach(ev => {
-
         b.addEventListener(ev, function(e) {
-
             e.preventDefault();
             jump(b);
-
             document.getElementById(messages[id]).innerHTML = "😄 Nice try!";
-
         }, { passive: false });
-
     });
-
 });
 setInterval(()=>{
  let h=document.createElement("div");
