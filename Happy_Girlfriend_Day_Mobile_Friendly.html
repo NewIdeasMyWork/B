@@ -45,12 +45,28 @@ function jump(btn){
  btn.style.left=Math.random()*(a.clientWidth-btn.offsetWidth)+"px";
  btn.style.top=Math.random()*(a.clientHeight-btn.offsetHeight)+"px";
 }
-["no1","no2"].forEach(id=>{
- const b=document.getElementById(id);
- ["touchstart","pointerdown","mouseenter","click"].forEach(ev=>{
-   b.addEventListener(ev,function(e){e.preventDefault();jump(b); if(id==="no1") s.innerHTML="😄 Nice try!";},{passive:false}
-  {b.addEventListener(ev,function(e){e.preventDefault();jump(b); if(id==="no2") s.innerHTML="😄 Nice try!";},{passive:false});
- });
+const messages = {
+    no1: "p",
+    no2: "s"
+};
+
+Object.keys(messages).forEach(id => {
+
+    const b = document.getElementById(id);
+
+    ["touchstart","pointerdown","mouseenter","click"].forEach(ev => {
+
+        b.addEventListener(ev, function(e) {
+
+            e.preventDefault();
+            jump(b);
+
+            document.getElementById(messages[id]).innerHTML = "😄 Nice try!";
+
+        }, { passive: false });
+
+    });
+
 });
 setInterval(()=>{
  let h=document.createElement("div");
